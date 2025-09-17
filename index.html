@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schindler SA - Hub Solutions</title>
+    <title>Schindler SA - Suite Applicazioni</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -38,14 +38,25 @@
         
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 24px;
-            max-width: 800px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+        }
+        
+        .app-card {
+            height: 200px;
+        }
+        
+        @media (max-width: 768px) {
+            .app-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
         }
         
         @media (max-width: 640px) {
             .app-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: 1fr;
                 gap: 16px;
             }
         }
@@ -53,91 +64,227 @@
 </head>
 <body class="light-gray-bg min-h-screen">
     <div class="container mx-auto px-6 py-8">
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <div class="bg-red-600 rounded-2xl p-8 mb-8 max-w-2xl mx-auto shadow-lg">
-                <h1 class="text-4xl font-bold text-white mb-4">Schindler SA</h1>
-                <p class="text-red-100 text-lg">Applications Suite</p>
-                <div class="w-24 h-1 bg-white rounded-full mx-auto mt-4"></div>
+        <!-- Header and Navigation -->
+        <div class="bg-white shadow-sm border-b border-gray-200 -mx-6 px-6 py-6 mb-8">
+            <div class="container mx-auto flex items-center justify-between">
+                <!-- Title -->
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">Schindler SA</h1>
+                    <p class="text-gray-600">Application Suite</p>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="flex space-x-8">
+                    <button onclick="showSection('estimation')" id="estimationTab" class="relative py-2 text-gray-700 font-medium transition-colors hover:text-red-600 border-b-2 border-red-600">
+                        Estimation
+                    </button>
+                    <button onclick="showSection('tools')" id="toolsTab" class="relative py-2 text-gray-700 font-medium transition-colors hover:text-red-600 border-b-2 border-transparent">
+                        Offer Creation
+                    </button>
+                </nav>
             </div>
         </div>
 
         <!-- Estimation Section -->
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Estimation</h2>
+        <div id="estimationSection" class="mb-12">
             <div class="app-grid mx-auto">
                 <!-- SPL Offer Estimation -->
-                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('spl-offer-estimation')">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-2xl flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
+                <div class="app-card relative" style="perspective: 1000px;">
+                    <div class="app-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                        <!-- Front -->
+                        <div class="app-card-front absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200" style="backface-visibility: hidden;">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800">SPL Offer Estimation</h3>
+                            </div>
+                            <div class="flex space-x-3 mt-auto">
+                                <button onclick="flipCard(this)" class="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm">
+                                    Info
+                                </button>
+                                <button onclick="launchApp('spl-offer-estimation')" class="flex-1 bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition-colors font-medium text-sm">
+                                    Start now!
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="app-card-back absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200 flex flex-col" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                            <p class="text-sm text-gray-600 leading-relaxed flex-1">Create detailed cost estimates for SPL elevator solutions with comprehensive pricing analysis and technical specifications.</p>
+                            <div class="flex justify-end mt-4">
+                                <button onclick="flipCard(this)" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">SPL Offer</h3>
-                    <p class="text-xs text-gray-500 text-center">Estimation</p>
                 </div>
 
                 <!-- BX MOD Kit -->
-                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('bx-mod-kit')">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-green-600 rounded-2xl flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                        </svg>
+                <div class="app-card relative" style="perspective: 1000px;">
+                    <div class="app-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                        <!-- Front -->
+                        <div class="app-card-front absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200" style="backface-visibility: hidden;">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800">BX MOD Kit</h3>
+                            </div>
+                            <div class="flex space-x-3 mt-auto">
+                                <button onclick="flipCard(this)" class="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm">
+                                    Info
+                                </button>
+                                <button onclick="launchApp('bx-mod-kit')" class="flex-1 bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition-colors font-medium text-sm">
+                                    Start now!
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="app-card-back absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200 flex flex-col" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                            <p class="text-sm text-gray-600 leading-relaxed flex-1">Configure and customize BX modernization kits with advanced component selection and compatibility checking tools.</p>
+                            <div class="flex justify-end mt-4">
+                                <button onclick="flipCard(this)" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">BX MOD</h3>
-                    <p class="text-xs text-gray-500 text-center">Kit</p>
                 </div>
 
                 <!-- Visual Fixtures -->
-                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('visual-fixtures')">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-purple-600 rounded-2xl flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                        </svg>
+                <div class="app-card relative" style="perspective: 1000px;">
+                    <div class="app-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                        <!-- Front -->
+                        <div class="app-card-front absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200" style="backface-visibility: hidden;">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800">Visual Fixtures</h3>
+                            </div>
+                            <div class="flex space-x-3 mt-auto">
+                                <button onclick="flipCard(this)" class="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm">
+                                    Info
+                                </button>
+                                <button onclick="launchApp('visual-fixtures')" class="flex-1 bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition-colors font-medium text-sm">
+                                    Start now!
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="app-card-back absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200 flex flex-col" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                            <p class="text-sm text-gray-600 leading-relaxed flex-1">Design and visualize elevator fixtures with 3D rendering capabilities and real-time customization options for optimal aesthetics.</p>
+                            <div class="flex justify-end mt-4">
+                                <button onclick="flipCard(this)" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">Visual</h3>
-                    <p class="text-xs text-gray-500 text-center">Fixtures</p>
                 </div>
             </div>
         </div>
 
         <!-- Tools to Order Section -->
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Tools to Order</h2>
+        <div id="toolsSection" class="mb-12 hidden">
             <div class="app-grid mx-auto">
                 <!-- NPE Offer Tool -->
-                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('npe-offer-tool')">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-orange-600 rounded-2xl flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a1 1 0 01-1-1V9a1 1 0 011-1h1a2 2 0 100-4H4a1 1 0 01-1-1V5a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
-                        </svg>
+                <div class="app-card relative" style="perspective: 1000px;">
+                    <div class="app-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                        <!-- Front -->
+                        <div class="app-card-front absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200" style="backface-visibility: hidden;">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a1 1 0 01-1-1V9a1 1 0 011-1h1a2 2 0 100-4H4a1 1 0 01-1-1V5a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800">NPE Offer Tool</h3>
+                            </div>
+                            <div class="flex space-x-3 mt-auto">
+                                <button onclick="flipCard(this)" class="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm">
+                                    Info
+                                </button>
+                                <button onclick="launchApp('npe-offer-tool')" class="flex-1 bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition-colors font-medium text-sm">
+                                    Start now!
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="app-card-back absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200 flex flex-col" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                            <p class="text-sm text-gray-600 leading-relaxed flex-1">Generate comprehensive NPE offers with automated calculations, technical specifications, and integrated pricing models.</p>
+                            <div class="flex justify-end mt-4">
+                                <button onclick="flipCard(this)" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">NPE Offer</h3>
-                    <p class="text-xs text-gray-500 text-center">Tool</p>
                 </div>
 
                 <!-- Offer Center -->
-                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('offer-center')">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-red-600 rounded-2xl flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
+                <div class="app-card relative" style="perspective: 1000px;">
+                    <div class="app-card-inner relative w-full h-full transition-transform duration-700" style="transform-style: preserve-3d;">
+                        <!-- Front -->
+                        <div class="app-card-front absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200" style="backface-visibility: hidden;">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800">Offer Center</h3>
+                            </div>
+                            <div class="flex space-x-3 mt-auto">
+                                <button onclick="flipCard(this)" class="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm">
+                                    Info
+                                </button>
+                                <button onclick="launchApp('offer-center')" class="flex-1 bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition-colors font-medium text-sm">
+                                    Start now!
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="app-card-back absolute inset-0 bg-white rounded-2xl p-8 shadow-lg border border-gray-200 flex flex-col" style="backface-visibility: hidden; transform: rotateY(180deg);">
+                            <p class="text-sm text-gray-600 leading-relaxed flex-1">Centralized platform for managing all offers, tracking proposals, and coordinating sales activities across multiple projects.</p>
+                            <div class="flex justify-end mt-4">
+                                <button onclick="flipCard(this)" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">Offer</h3>
-                    <p class="text-xs text-gray-500 text-center">Center</p>
                 </div>
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="text-center mt-16">
-            <div class="bg-white rounded-xl p-6 max-w-md mx-auto shadow-lg">
-                <p class="text-gray-700 text-sm">© 2025 Schindler SA</p>
-                <p class="text-gray-500 text-xs mt-1">Hub Applications Suite</p>
-            </div>
-        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p class="text-gray-700 text-sm">© 2024 Schindler SA</p>
+            <p class="text-gray-500 text-xs mt-1">Integrated Application Suite</p>
+        </div>
+    </footer>
 
 
 
@@ -158,7 +305,7 @@
             },
             'npe-offer-tool': {
                 name: 'NPE Offer Tool',
-                url: 'https://npeoffers.global.schindler.com/' // To be set by developer
+                url: 'https://npeoffers.global.schindler.com' // To be set by developer
             },
             'offer-center': {
                 name: 'Offer Center',
@@ -208,7 +355,43 @@
             }, 2000);
         }
 
+        // Navigation functionality
+        function showSection(section) {
+            const estimationSection = document.getElementById('estimationSection');
+            const toolsSection = document.getElementById('toolsSection');
+            const estimationTab = document.getElementById('estimationTab');
+            const toolsTab = document.getElementById('toolsTab');
+
+            if (section === 'estimation') {
+                estimationSection.classList.remove('hidden');
+                toolsSection.classList.add('hidden');
+                estimationTab.classList.remove('border-transparent');
+                estimationTab.classList.add('border-red-600', 'text-red-600');
+                toolsTab.classList.remove('border-red-600', 'text-red-600');
+                toolsTab.classList.add('border-transparent');
+            } else {
+                estimationSection.classList.add('hidden');
+                toolsSection.classList.remove('hidden');
+                toolsTab.classList.remove('border-transparent');
+                toolsTab.classList.add('border-red-600', 'text-red-600');
+                estimationTab.classList.remove('border-red-600', 'text-red-600');
+                estimationTab.classList.add('border-transparent');
+            }
+        }
+
+        // Card flip functionality
+        function flipCard(button) {
+            const card = button.closest('.app-card');
+            const cardInner = card.querySelector('.app-card-inner');
+            
+            if (cardInner.style.transform === 'rotateY(180deg)') {
+                cardInner.style.transform = 'rotateY(0deg)';
+            } else {
+                cardInner.style.transform = 'rotateY(180deg)';
+            }
+        }
+
 
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9808baacd0e24c52',t:'MTc1ODExMzQyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98093c95a3f7edca',t:'MTc1ODExODc0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
