@@ -62,28 +62,33 @@
         }
     </style>
 </head>
-<body class="light-gray-bg min-h-screen">
-    <div class="container mx-auto px-6 py-8">
-        <!-- Header and Navigation -->
-        <div class="bg-white shadow-sm border-b border-gray-200 -mx-6 px-6 py-6 mb-8">
-            <div class="container mx-auto flex items-center justify-between">
-                <!-- Title -->
-                <div>
-                    <h1 class="text-3xl font-bold text-gray-800">Schindler SA</h1>
-                    <p class="text-gray-600">Application Suite</p>
-                </div>
-                
-                <!-- Navigation -->
-                <nav class="flex space-x-8">
-                    <button onclick="showSection('estimation')" id="estimationTab" class="relative py-2 text-gray-700 font-medium transition-colors hover:text-red-600 border-b-2 border-red-600">
-                        Estimation
-                    </button>
-                    <button onclick="showSection('tools')" id="toolsTab" class="relative py-2 text-gray-700 font-medium transition-colors hover:text-red-600 border-b-2 border-transparent">
-                        Offer Creation
-                    </button>
-                </nav>
+<body class="light-gray-bg min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-6 flex items-center justify-between">
+            <!-- Title -->
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800">Schindler SA</h1>
+                <p class="text-gray-600">Application Suite</p>
             </div>
+            
+            <!-- Navigation -->
+            <nav class="flex space-x-8">
+                <button onclick="showSection('estimation')" id="estimationTab" class="relative py-2 text-gray-700 font-medium transition-colors hover:text-red-600 border-b-2 border-red-600">
+                    Estimation
+                </button>
+                <button onclick="showSection('tools')" id="toolsTab" class="relative py-2 text-gray-700 font-medium transition-colors hover:text-red-600 border-b-2 border-transparent">
+                    Offer Creation
+                </button>
+            </nav>
         </div>
+    </header>
+
+    <!-- Dividing Line -->
+    <div class="border-b border-gray-200"></div>
+
+    <!-- Main Content -->
+    <main class="flex-1 container mx-auto px-6 py-8">
 
         <!-- Estimation Section -->
         <div id="estimationSection" class="mb-12">
@@ -132,7 +137,8 @@
                             <div class="flex items-center mb-6">
                                 <div class="w-12 h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
                                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
                                 </div>
                                 <h3 class="text-lg font-semibold text-gray-800">BX MOD Kit</h3>
@@ -168,8 +174,7 @@
                             <div class="flex items-center mb-6">
                                 <div class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
                                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
                                     </svg>
                                 </div>
                                 <h3 class="text-lg font-semibold text-gray-800">Visual Fixtures</h3>
@@ -276,12 +281,12 @@
             </div>
         </div>
 
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-16">
+    <footer class="bg-white border-t border-gray-200 mt-auto">
         <div class="container mx-auto px-6 py-8 text-center">
-            <p class="text-gray-700 text-sm">© 2024 Schindler SA</p>
+            <p class="text-gray-700 text-sm">© 2025 Schindler SA</p>
             <p class="text-gray-500 text-xs mt-1">Integrated Application Suite</p>
         </div>
     </footer>
@@ -393,5 +398,5 @@
 
 
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98093c95a3f7edca',t:'MTc1ODExODc0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9809581e83040e57',t:'MTc1ODExOTg3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
