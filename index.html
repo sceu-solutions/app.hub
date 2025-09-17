@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schindler SA - Hub Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .app-icon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1);
+        }
+        
+        .app-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .app-icon:active {
+            transform: scale(0.95);
+        }
+        
+        .light-gray-bg {
+            background: #f8f9fa;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 24px;
+            max-width: 800px;
+        }
+        
+        @media (max-width: 640px) {
+            .app-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="light-gray-bg min-h-screen">
+    <div class="container mx-auto px-6 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="bg-white rounded-2xl p-8 mb-8 max-w-2xl mx-auto shadow-lg">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">Schindler SA</h1>
+                <p class="text-gray-600 text-lg">Application Suite</p>
+                <div class="w-24 h-1 bg-blue-600 rounded-full mx-auto mt-4"></div>
+            </div>
+        </div>
+
+        <!-- Estimation Section -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Estimation</h2>
+            <div class="app-grid mx-auto">
+                <!-- SPL Offer Estimation -->
+                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('spl-offer-estimation')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-2xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">SPL Offer</h3>
+                    <p class="text-xs text-gray-500 text-center">Estimation</p>
+                </div>
+
+                <!-- BX MOD Kit -->
+                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('bx-mod-kit')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-green-600 rounded-2xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">BX MOD</h3>
+                    <p class="text-xs text-gray-500 text-center">Kit</p>
+                </div>
+
+                <!-- Visual Fixtures -->
+                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('visual-fixtures')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-purple-600 rounded-2xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">Visual</h3>
+                    <p class="text-xs text-gray-500 text-center">Fixtures</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools to Order Section -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Tools to Order</h2>
+            <div class="app-grid mx-auto">
+                <!-- NPE Offer Tool -->
+                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('npe-offer-tool')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-orange-600 rounded-2xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a1 1 0 01-1-1V9a1 1 0 011-1h1a2 2 0 100-4H4a1 1 0 01-1-1V5a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">NPE Offer</h3>
+                    <p class="text-xs text-gray-500 text-center">Tool</p>
+                </div>
+
+                <!-- Offer Center -->
+                <div class="app-icon bg-white rounded-3xl p-6 cursor-pointer shadow-lg" onclick="launchApp('offer-center')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-red-600 rounded-2xl flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-gray-800 text-center mb-1">Offer</h3>
+                    <p class="text-xs text-gray-500 text-center">Center</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-16">
+            <div class="bg-white rounded-xl p-6 max-w-md mx-auto shadow-lg">
+                <p class="text-gray-700 text-sm">© 2025 Schindler SA</p>
+                <p class="text-gray-500 text-xs mt-1">Hub Application Suite</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Application configuration - URLs to be set by developer
+        const appConfig = {
+            'spl-offer-estimation': {
+                name: 'SPL Offer Estimation',
+                url: 'https://sceu-solutions.github.io/app.cpq' // To be set by developer
+            },
+            'bx-mod-kit': {
+                name: 'BX MOD Kit',
+                url: 'https://sceu-solutions.github.io/app.configurator.bxmodkit/' // To be set by developer
+            },
+            'visual-fixtures': {
+                name: 'Visual Fixtures',
+                url: 'https://sceu-solutions.github.io/app.fixtures' // To be set by developer
+            },
+            'npe-offer-tool': {
+                name: 'NPE Offer Tool',
+                url: 'https://npeoffers.global.schindler.com/' // To be set by developer
+            },
+            'offer-center': {
+                name: 'Offer Center',
+                url: 'https://offercenter.global.schindler.com/#/home' // To be set by developer
+            }
+        };
+
+        function launchApp(appId) {
+            const config = appConfig[appId];
+            if (!config) return;
+
+            const targetUrl = config.url;
+
+            // If URL is empty, show alert to developer
+            if (!targetUrl) {
+                alert(`Please set the URL for ${config.name} in the appConfig object`);
+                return;
+            }
+
+            // Open application in new window
+            window.open(targetUrl, '_blank');
+            
+            // Visual feedback
+            showLaunchFeedback(config.name);
+        }
+
+
+
+        function showLaunchFeedback(appName) {
+            // Crea notifica temporanea
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.textContent = `Avvio ${appName}...`;
+            document.body.appendChild(notification);
+
+            // Animazione di entrata
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+
+            // Rimozione automatica
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2000);
+        }
+
+
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9808baacd0e24c52',t:'MTc1ODExMzQyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
