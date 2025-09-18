@@ -5,6 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schindler SA - Suite Applicazioni</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Code Protection - Disable common developer tools access methods
+        
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I (Developer Tools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+U (View Source)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+S (Save Page)
+            if (e.ctrlKey && e.keyCode === 83) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+A (Select All)
+            if (e.ctrlKey && e.keyCode === 65) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+P (Print)
+            if (e.ctrlKey && e.keyCode === 80) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Disable drag
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Console warning
+        console.clear();
+        console.log('%cSTOP!', 'color: red; font-size: 50px; font-weight: bold;');
+        console.log('%cThis is a browser feature intended for developers. Code access is restricted.', 'color: red; font-size: 16px;');
+        
+        // Detect developer tools
+        let devtools = {open: false, orientation: null};
+        const threshold = 160;
+        
+        setInterval(function() {
+            if (window.outerHeight - window.innerHeight > threshold || 
+                window.outerWidth - window.innerWidth > threshold) {
+                if (!devtools.open) {
+                    devtools.open = true;
+                    console.clear();
+                    document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#f3f4f6;"><div style="text-align:center;"><h1 style="color:#ef4444;font-size:2rem;margin-bottom:1rem;">Access Restricted</h1><p style="color:#6b7280;">Developer tools detected. Please close them to continue.</p></div></div>';
+                }
+            } else {
+                if (devtools.open) {
+                    devtools.open = false;
+                    location.reload();
+                }
+            }
+        }, 500);
+        
+        // Disable print
+        window.addEventListener('beforeprint', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Clear console periodically
+        setInterval(function() {
+            console.clear();
+        }, 1000);
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
